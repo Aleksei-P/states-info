@@ -1,8 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { states } from './components/Flags.js'
-// import { Route, Switch, Link } from 'react-router-dom';
-
 
 function App() {
 
@@ -27,10 +25,10 @@ function App() {
   }, [buttonClicked]);
 
   useEffect(() => {
-    async function findState(data) {
+     function findState(data) {
       if (data.length !== 0) {
-        let stateName = await states.find((el) => el.name === data["ID State"]);
-        await setFlag(stateName.image);
+        let stateName =  states.find((el) => el.name === data["ID State"]);
+        setFlag(stateName.image);
       }
     }
     findState(info);

@@ -15,7 +15,8 @@
   margin: auto;
   padding-left: 3px;
   padding-right: 3px;
-  padding-top: 3px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   font-size: 1.3em;
   font-weight: 500;
   font-style: italic;
@@ -46,6 +47,8 @@
   .state-info {
     display: block;
     margin-bottom: -50px;
+    padding: 0;
+
   }
   .button {
     margin-top: 3px;
@@ -58,5 +61,12 @@
     color: rgb(255, 255, 255);
     text-shadow: 2px 1px 18px #020202;
     background-color: rgba(224, 52, 52, 0.7);
+  }
+  .App {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .flag {
+    min-height: 65vh;
   }
 }
