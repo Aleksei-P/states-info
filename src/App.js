@@ -1,26 +1,29 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { states } from './components/Flags.js'
+// import { Route, Switch, Link } from 'react-router-dom';
 
 
 function App() {
 
   const [info, setInfo] = useState([]);
-  const [flag, setFlag] = useState(" ");
-  const [buttonClicked, setButtonCliked] = useState(false);
+  const [flag, setFlag] = useState("");
+  const [buttonClicked, setButtonCliked] = useState(true);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch("https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest");
-        const json = await response.json();
-        setInfo(json.data[Math.floor(Math.random() * json.data.length)]);
-      } catch (e) {
-        console.error(e);
+    if (buttonClicked === true) {
+      async function fetchData() {
+        try {
+          const response = await fetch("https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest");
+          const json = await response.json();
+          setInfo(json.data[Math.floor(Math.random() * json.data.length)]);
+        } catch (e) {
+          console.error(e);
+        }
       }
+      fetchData();
+      setButtonCliked(false);
     }
-    fetchData();
-    setButtonCliked(false)
   }, [buttonClicked]);
 
   useEffect(() => {
@@ -46,8 +49,8 @@ function App() {
         </div>
       ) : (
         "Loading"
-        )}
-        <div className="flag" style={{ backgroundImage: `url(${flag})` }}></div>
+      )}
+      <div className="flag" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${flag})` }}></div>
     </div>
   );
 }
