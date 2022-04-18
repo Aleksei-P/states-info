@@ -28,13 +28,13 @@ function App() {
 
   useEffect(() => {
     async function findState(data) {
-      let stateName = await states.find((el) => el.name === data["ID State"]);
-
-      setFlag(stateName.image);
+      if (data.length !== 0) {
+        let stateName = await states.find((el) => el.name === data["ID State"]);
+        await setFlag(stateName.image);
+      }
     }
     findState(info);
   }, [info]);
-
 
   return (
     <div className="App">
