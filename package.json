@@ -2,7 +2,7 @@
   "name": "states-info",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://aleksei-p.github.io/testapp",
+  "homepage": "https://aleksei-p.github.io/states-info",
   "dependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
