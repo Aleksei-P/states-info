@@ -25,6 +25,24 @@ function App() {
        setState([Math.floor(Math.random() * data.length)]);
     }
 
+    useEffect(() => {
+      const blurClass =  document.getElementById("blurring");
+      let load = 100;
+      if (info[state]) {
+        let int = setInterval(blurring, 25);
+        function blurring() {
+          load--;
+          if (load < 1) {
+            clearInterval(int);
+          }
+          blurClass.style.filter = `grayscale(${load}%)`;
+        }
+        // const scale = (num, in_min, in_max, out_min, out_max) => {
+        //   return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+        // };
+      }
+    }, [state, info]);
+
   useEffect(() => {
     if (info[state]) {
     function findState(data) {
@@ -49,7 +67,7 @@ function App() {
       ) : (
         "Loading"
       )}
-      <div className="flag" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${flag})` }}></div>
+      <div className="flag" id="blurring" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${flag})` }}></div>
     </div>
   );
 }
