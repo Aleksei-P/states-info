@@ -29,7 +29,8 @@
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  /* max-width: 1000px; */
+  text-align: start;
 }
 
 .button {
@@ -48,8 +49,9 @@
 @media screen and (max-width: 780px) {
   .state-info {
     display: block;
-    margin-bottom: -50px;
+    /* margin-bottom: -50px; */
     padding: 0;
+    text-align: center;
 
   }
   .button {
