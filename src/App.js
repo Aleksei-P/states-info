@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { states } from "./components/Flags.js";
+import { states } from "./utils/Flags.js";
 
 function App() {
   const [info, setInfo] = useState([]);
@@ -41,21 +41,8 @@ function App() {
           console.error(e);
         }
       }
-
-      const blurClass = document.getElementById("blurring");
-      let load = 100;
-      let int = setInterval(blurring, 80);
-      function blurring() {
-        load = load - 5;
-        if (load < 1) {
-          clearInterval(int);
-        }
-        blurClass.style.filter = `grayscale(${load}%)`;
-      }
-
       findState(info[state]);
       findWeather();
-      // console.log(weather);
     }
   }, [state, info]);
 
@@ -73,7 +60,21 @@ function App() {
             <p> Humidity - {weather.main.humidity} %</p>
             <p> Wind - {weather.wind.speed} miles/hour</p>
           </div>
-          <button className="button" onClick={() => randomState(info)}>
+          <button
+            className="button"
+            id="buttonClick"
+            disabled={false}
+            onClick={() => {
+              randomState(info);
+              document.getElementById("buttonClick").disabled = true;
+              setTimeout(function () {
+                document.getElementById("buttonClick").disabled = false;
+              }, 3000);
+              if (!document.getElementById("blurring").classList.add("flag_filter")) {
+                document.getElementById("blurring").classList.add("flag_filter");
+              }
+            }}
+          >
             Next Random State
           </button>
         </div>

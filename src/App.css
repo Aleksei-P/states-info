@@ -8,7 +8,15 @@
   background-position: center;
   background-size: contain;
   min-height: 85vh;
+  /* animation: loading 3s linear infinite; */
+  /* transition-property: filter(); */
+  /* transition-timing-function: linear; */
+  /* animation-iteration-count: 1; */
   /* max-height: 95vh; */
+}
+
+.flag_filter {
+  transition: 3s;
 }
 
 .state-info {
@@ -49,10 +57,8 @@
 @media screen and (max-width: 780px) {
   .state-info {
     display: block;
-    /* margin-bottom: -50px; */
     padding: 0;
     text-align: center;
-
   }
   .button {
     margin-top: 3px;
